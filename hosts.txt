@@ -1,0 +1,5 @@
+[CI]
+CI ansible_host=18.206.201.107
+
+[QA]
+QA ansible_host=54.204.175.93
