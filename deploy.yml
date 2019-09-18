@@ -1,6 +1,6 @@
 
 ---
-- hosts: "{{ ENV | default('ci') }}"
+- hosts: "{{ ENV | default('CI') }}"
   become: true
   tasks:
   
@@ -17,7 +17,7 @@
       get_url:      
           dest: /tmp 
           url: http://milook:miklmiklmikl@18.207.221.194:8081/artifactory/libs-snapshot-local/org/springframework/boot/spring-boot-smoke-test-web-ui/2.2.0.BUILD-SNAPSHOT/spring-boot-smoke-test-web-ui-{{BUILD_NUMBER}}.jar 
-          # username: jmilook
+          # username: milook
           # password: miklmiklmikl
           mode: 0755
           group: ubuntu
