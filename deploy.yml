@@ -1,0 +1,26 @@
+
+---
+- hosts: "{{ ENV | default('ci') }}"
+  become: true
+  tasks:
+  
+    - name: dependencies install lmxl
+      apt:
+       name: python-lxml 
+       state: present
+       
+    - name: get artifact from Artifacorty
+      get_url:      
+          dest: /tmp 
+          url: http://jenkins:jenkins88@artifactory:8081/artifactory/libs-snapshot-local/org/springframework/boot/spring-boot-smoke-test-web-ui/2.2.0.BUILD-SNAPSHOT/spring-boot-smoke-test-web-ui-{{BUILD_NUMBER}}.jar 
+          # username: jenkins
+          # password: jenkins88
+          mode: 0755
+          group: ubuntu
+          owner: ubuntu
+
+    - name: run java app
+      become: true
+      shell: java -jar /tmp/spring-boot-smoke-test-web-ui-{{ BUILD_NUMBER }}.jar --server.port={{ PORT_NUMBER | default('8080') }}
+      async: 360
+      poll: 0
