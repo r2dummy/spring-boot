@@ -1,3 +1,3 @@
 [preprod]
-CI ansible_host=18.206.201.107 ansible_user=ubuntu ansible_ssh_private_key_file=~/home/ubuntu/Gwork.pem
+CI ansible_host=18.206.201.107 ansible_user=ubuntu ansible_ssh_private_key_file=~/workspace/GradWork/group_vars/Gwork.pem
 QA ansible_host=54.204.175.93
